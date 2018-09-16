@@ -8,6 +8,19 @@
 
 import UIKit
 
+protocol PresenterDelegate : AnyObject {
+    func display(flickrResources:FlickrResource)
+    func display(error: Error)
+}
 class Presenter: NSObject {
-
+    weak var delegate : PresenterDelegate?
+    func loadFlickrNasaPhotos () {
+        Interactor.getFlickrPhotos { (flickerResource, error) in
+            if error != nil {
+                self.delegate?.display(flickrResources: flickerResource!)
+            }else{
+                self.delegate?.display(error: error!)
+            }
+        }
+    }
 }

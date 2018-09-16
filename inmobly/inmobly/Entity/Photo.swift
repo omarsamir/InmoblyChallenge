@@ -10,14 +10,14 @@ import UIKit
 import ObjectMapper
 
 class Photo: NSObject,Mappable {
-    var id: String!
-    var owner: String!
-    var secret, server: String!
-    var farm: Int!
-    var title: String!
-    var ispublic, isfriend, isfamily: Int!
-    var urlM: String!
-    var heightM, widthM: String!
+    var id: String?
+    var owner: String?
+    var secret, server: String?
+    var farm: Int?
+    var title: String?
+    var ispublic, isfriend, isfamily: Int?
+    var urlM: String?
+    var heightM, widthM: String?
     
     required init?(map: Map) {
     }

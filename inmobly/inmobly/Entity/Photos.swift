@@ -10,8 +10,8 @@ import UIKit
 import ObjectMapper
 
 class Photos: NSObject,Mappable {
-    var page, pages, perpage, total: Int!
-    var photo: [Photo]!
+    var page, pages, perpage, total: Int?
+    var photo: [Photo]?
     
     required init?(map: Map) {
     }
@@ -21,6 +21,6 @@ class Photos: NSObject,Mappable {
         pages   <- map["pages"]
         perpage <- map["perpage"]
         total   <- map["total"]
-        photo   <- map["photo"]
+        photo  <- map["photo"]
     }
 }

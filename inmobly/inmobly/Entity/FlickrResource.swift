@@ -10,8 +10,8 @@ import UIKit
 import ObjectMapper
 
 class FlickrResource: NSObject, Mappable {
-    var photos: Photos!
-    var stat: String!
+    var photos: Photos?
+    var stat: String?
     
     required init?(map: Map) {
     }

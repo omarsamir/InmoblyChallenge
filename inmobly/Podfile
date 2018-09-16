@@ -8,6 +8,7 @@ target 'inmobly' do
   # Pods for inmobly
    pod 'ObjectMapper'
    pod 'SDWebImage'
+   pod 'Alamofire'
   target 'inmoblyTests' do
     inherit! :search_paths
     # Pods for testing

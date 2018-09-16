@@ -23,6 +23,10 @@
 		74E29A91214F06560075BC35 /* FlickrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E29A8F214F06560075BC35 /* FlickrViewController.xib */; };
 		74E29A93214F0C7F0075BC35 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E29A92214F0C7F0075BC35 /* Photos.swift */; };
 		74E29A95214F0C9D0075BC35 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E29A94214F0C9D0075BC35 /* Photo.swift */; };
+		74E29A97214F121E0075BC35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E29A96214F121E0075BC35 /* Constants.swift */; };
+		74E29A99214F205B0075BC35 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E29A98214F205B0075BC35 /* Alamofire.framework */; };
+		74E29A9B214F205B0075BC35 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E29A9A214F205B0075BC35 /* ObjectMapper.framework */; };
+		74E29A9D214F205B0075BC35 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E29A9C214F205B0075BC35 /* SDWebImage.framework */; };
 		DEC12820C0F103F995701C6A /* Pods_inmoblyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52216FE9A8F1F93E6E79CFA9 /* Pods_inmoblyTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +65,10 @@
 		74E29A8F214F06560075BC35 /* FlickrViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrViewController.xib; sourceTree = "<group>"; };
 		74E29A92214F0C7F0075BC35 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		74E29A94214F0C9D0075BC35 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		74E29A96214F121E0075BC35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		74E29A98214F205B0075BC35 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E29A9A214F205B0075BC35 /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E29A9C214F205B0075BC35 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B43BA48F919600C9021343E /* Pods_inmobly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inmobly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,6 +77,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74E29A99214F205B0075BC35 /* Alamofire.framework in Frameworks */,
+				74E29A9B214F205B0075BC35 /* ObjectMapper.framework in Frameworks */,
+				74E29A9D214F205B0075BC35 /* SDWebImage.framework in Frameworks */,
 				6894629C9FB20908CEE85238 /* Pods_inmobly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +141,7 @@
 				74E29A6A214EF0F00075BC35 /* LaunchScreen.storyboard */,
 				74E29A6D214EF0F00075BC35 /* Info.plist */,
 				74E29A65214EF0EF0075BC35 /* inmobly.xcdatamodeld */,
+				74E29A96214F121E0075BC35 /* Constants.swift */,
 			);
 			path = inmobly;
 			sourceTree = "<group>";
@@ -189,6 +201,9 @@
 		D5078D770882324EB9676DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74E29A98214F205B0075BC35 /* Alamofire.framework */,
+				74E29A9A214F205B0075BC35 /* ObjectMapper.framework */,
+				74E29A9C214F205B0075BC35 /* SDWebImage.framework */,
 				8B43BA48F919600C9021343E /* Pods_inmobly.framework */,
 				52216FE9A8F1F93E6E79CFA9 /* Pods_inmoblyTests.framework */,
 			);
@@ -321,11 +336,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-inmobly/Pods-inmobly-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -360,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74E29A93214F0C7F0075BC35 /* Photos.swift in Sources */,
+				74E29A97214F121E0075BC35 /* Constants.swift in Sources */,
 				74E29A87214F05FD0075BC35 /* Router.swift in Sources */,
 				74E29A8D214F063F0075BC35 /* Presenter.swift in Sources */,
 				74E29A61214EF0EF0075BC35 /* ViewController.swift in Sources */,
