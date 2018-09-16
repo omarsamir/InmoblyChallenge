@@ -7,7 +7,18 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class FlickrResource: NSObject {
-
+class FlickrResource: NSObject, Mappable {
+    var photos: Photos!
+    var stat: String!
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        photos <- map["photos"]
+        stat   <- map["stat"]
+       
+    }
 }
