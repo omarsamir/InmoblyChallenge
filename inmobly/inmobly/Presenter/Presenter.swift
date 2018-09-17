@@ -16,7 +16,7 @@ class Presenter: NSObject {
     weak var delegate : PresenterDelegate?
     func loadFlickrNasaPhotos () {
         Interactor.getFlickrPhotos { (flickerResource, error) in
-            if error != nil {
+            if error == nil {
                 self.delegate?.display(flickrResources: flickerResource!)
             }else{
                 self.delegate?.display(error: error!)

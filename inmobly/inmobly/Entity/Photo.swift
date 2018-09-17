@@ -32,7 +32,7 @@ class Photo: NSObject,Mappable {
         ispublic <- map["ispublic"]
         isfriend <- map["isfriend"]
         isfamily <- map["isfamily"]
-        urlM     <- map["urlM"]
+        urlM     <- map["url_m"]
         heightM  <- map["heightM"]
         widthM   <- map["widthM"]
         
