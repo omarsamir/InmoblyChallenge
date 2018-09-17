@@ -1,2 +1,4 @@
 
 inmobly/Pods/*
+*.xcuserstate
+*.xcbkptlist
