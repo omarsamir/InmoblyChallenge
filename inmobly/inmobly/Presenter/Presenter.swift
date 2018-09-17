@@ -14,8 +14,9 @@ protocol PresenterDelegate : AnyObject {
 }
 class Presenter: NSObject {
     weak var delegate : PresenterDelegate?
+    let interactor : Interactor = Interactor()
     func loadFlickrNasaPhotos () {
-        Interactor.getFlickrPhotos { (flickerResource, error) in
+        interactor.getFlickrPhotos { (flickerResource, error) in
             if error == nil {
                  DispatchQueue.main.async {
                     self.delegate?.display(flickrResources: flickerResource!)

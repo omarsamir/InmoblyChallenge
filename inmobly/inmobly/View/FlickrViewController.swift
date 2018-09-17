@@ -31,6 +31,10 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    
     // MARK: Implement presenter delegate methods
     func display(flickrResources: FlickrResource) {
         mainFlickrResource = flickrResources
@@ -66,6 +70,6 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 }
