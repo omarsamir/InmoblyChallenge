@@ -17,9 +17,13 @@ class Presenter: NSObject {
     func loadFlickrNasaPhotos () {
         Interactor.getFlickrPhotos { (flickerResource, error) in
             if error == nil {
-                self.delegate?.display(flickrResources: flickerResource!)
+                 DispatchQueue.main.async {
+                    self.delegate?.display(flickrResources: flickerResource!)
+                }
             }else{
-                self.delegate?.display(error: error!)
+                 DispatchQueue.main.async {
+                    self.delegate?.display(error: error!)
+                }
             }
         }
     }

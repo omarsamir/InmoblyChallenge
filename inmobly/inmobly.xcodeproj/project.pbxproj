@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6894629C9FB20908CEE85238 /* Pods_inmobly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B43BA48F919600C9021343E /* Pods_inmobly.framework */; };
+		74790C3E2150138C00F69911 /* FlickrCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74790C3C2150138C00F69911 /* FlickrCollectionViewCell.swift */; };
+		74790C3F2150138C00F69911 /* FlickrCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74790C3D2150138C00F69911 /* FlickrCollectionViewCell.xib */; };
 		74E29A5F214EF0EF0075BC35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E29A5E214EF0EF0075BC35 /* AppDelegate.swift */; };
 		74E29A61214EF0EF0075BC35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E29A60214EF0EF0075BC35 /* ViewController.swift */; };
 		74E29A64214EF0EF0075BC35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74E29A62214EF0EF0075BC35 /* Main.storyboard */; };
@@ -45,6 +47,9 @@
 		142E68FC06983B258B9D7FE8 /* Pods-inmoblyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inmoblyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inmoblyTests/Pods-inmoblyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4EB720D13AA6FA06D8F0A964 /* Pods-inmobly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inmobly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inmobly/Pods-inmobly.debug.xcconfig"; sourceTree = "<group>"; };
 		52216FE9A8F1F93E6E79CFA9 /* Pods_inmoblyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inmoblyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74790C3C2150138C00F69911 /* FlickrCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrCollectionViewCell.swift; sourceTree = "<group>"; };
+		74790C3D2150138C00F69911 /* FlickrCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrCollectionViewCell.xib; sourceTree = "<group>"; };
+		74790C4021501A6F00F69911 /* inmobly-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "inmobly-Bridging-Header.h"; sourceTree = "<group>"; };
 		74E29A5B214EF0EF0075BC35 /* inmobly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inmobly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E29A5E214EF0EF0075BC35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74E29A60214EF0EF0075BC35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +109,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		74790C3B2150135700F69911 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				74790C3C2150138C00F69911 /* FlickrCollectionViewCell.swift */,
+				74790C3D2150138C00F69911 /* FlickrCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		74E29A52214EF0EF0075BC35 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +154,7 @@
 				74E29A6D214EF0F00075BC35 /* Info.plist */,
 				74E29A65214EF0EF0075BC35 /* inmobly.xcdatamodeld */,
 				74E29A96214F121E0075BC35 /* Constants.swift */,
+				74790C4021501A6F00F69911 /* inmobly-Bridging-Header.h */,
 			);
 			path = inmobly;
 			sourceTree = "<group>";
@@ -190,6 +205,7 @@
 		74E29A85214F059F0075BC35 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				74790C3B2150135700F69911 /* CollectionViewCell */,
 				74E29A8E214F06560075BC35 /* FlickrViewController.swift */,
 				74E29A8F214F06560075BC35 /* FlickrViewController.xib */,
 			);
@@ -292,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74790C3F2150138C00F69911 /* FlickrCollectionViewCell.xib in Resources */,
 				74E29A6C214EF0F00075BC35 /* LaunchScreen.storyboard in Resources */,
 				74E29A69214EF0F00075BC35 /* Assets.xcassets in Resources */,
 				74E29A91214F06560075BC35 /* FlickrViewController.xib in Resources */,
@@ -379,6 +396,7 @@
 				74E29A61214EF0EF0075BC35 /* ViewController.swift in Sources */,
 				74E29A95214F0C9D0075BC35 /* Photo.swift in Sources */,
 				74E29A89214F060A0075BC35 /* Interactor.swift in Sources */,
+				74790C3E2150138C00F69911 /* FlickrCollectionViewCell.swift in Sources */,
 				74E29A5F214EF0EF0075BC35 /* AppDelegate.swift in Sources */,
 				74E29A8B214F06340075BC35 /* FlickrResource.swift in Sources */,
 				74E29A90214F06560075BC35 /* FlickrViewController.swift in Sources */,
@@ -551,6 +569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = omar.inmobly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/inmobly-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -569,6 +588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = omar.inmobly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/inmobly-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlickrViewController" customModule="inmobly" customModuleProvider="target">
             <connections>
+                <outlet property="nasaImagesCollectionView" destination="P9z-6G-dba" id="QIc-DP-FRl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +20,36 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="P9z-6G-dba">
+                    <rect key="frame" x="20" y="54" width="335" height="593"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="20" id="2Yg-82-9hJ">
+                        <size key="itemSize" width="150" height="150"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nasa Images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-qB-zcB">
+                    <rect key="frame" x="20" y="20" width="335" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="P9z-6G-dba" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="5rE-nf-Adf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P9z-6G-dba" secondAttribute="trailing" constant="20" id="I0m-wD-oTn"/>
+                <constraint firstItem="P9z-6G-dba" firstAttribute="top" secondItem="pf0-qB-zcB" secondAttribute="bottom" constant="10" id="J6S-U4-hpG"/>
+                <constraint firstItem="pf0-qB-zcB" firstAttribute="leading" secondItem="P9z-6G-dba" secondAttribute="leading" id="PgT-lo-qhp"/>
+                <constraint firstItem="pf0-qB-zcB" firstAttribute="trailing" secondItem="P9z-6G-dba" secondAttribute="trailing" id="UI7-fv-1Yk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="P9z-6G-dba" secondAttribute="bottom" constant="20" id="Ufy-7G-jr9"/>
+                <constraint firstItem="pf0-qB-zcB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zac-yb-ynB"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="32.5" y="120.5"/>
         </view>
     </objects>
 </document>

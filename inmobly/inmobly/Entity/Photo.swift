@@ -17,7 +17,8 @@ class Photo: NSObject,Mappable {
     var title: String?
     var ispublic, isfriend, isfamily: Int?
     var urlM: String?
-    var heightM, widthM: String?
+    var urlL: String?
+    var heightM, widthM,  heightL, widthL: String?
     
     required init?(map: Map) {
     }
@@ -33,8 +34,10 @@ class Photo: NSObject,Mappable {
         isfriend <- map["isfriend"]
         isfamily <- map["isfamily"]
         urlM     <- map["url_m"]
+        urlL     <- map["url_l"]
         heightM  <- map["heightM"]
         widthM   <- map["widthM"]
-        
+        heightL  <- map["heightL"]
+        widthL   <- map["widthL"]
     }
 }
