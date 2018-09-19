@@ -13,4 +13,6 @@ class Constants: NSObject {
     static let HTTPREQUEST_TYPE_GET = "GET"
     static let COLLECTION_VIEW_CELL_ID = "FlickrCollectionViewCellId"
     static let GREY_PLACEHOLDER_IMAGE_NAME = "gray-placeholder"
+    static let NASA_IMAGES_ENTITY_NAME = "Nasa_Images"
+    static let NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME = "imageData"
 }

@@ -47,11 +47,11 @@ class Interactor: NSObject {
     
     func saveImage(imageData: Data) {
         let entity =
-            NSEntityDescription.entity(forEntityName: "Nasa_Images",
+            NSEntityDescription.entity(forEntityName: Constants.NASA_IMAGES_ENTITY_NAME,
                                        in: self.managedObjectContext)!
         let nasaImages = NSManagedObject(entity: entity,
                                      insertInto: self.managedObjectContext)
-        nasaImages.setValue(imageData, forKeyPath: "imageData")
+        nasaImages.setValue(imageData, forKeyPath: Constants.NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME)
         do {
             try self.managedObjectContext.save()
             print("Image #" + String(globalIndex) + "Saved")
@@ -62,14 +62,11 @@ class Interactor: NSObject {
     
     
     func retriveImgage(){
-        //2
         let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Nasa_Images")
-        
-        //3
+            NSFetchRequest<NSManagedObject>(entityName: Constants.NASA_IMAGES_ENTITY_NAME)
         do {
             let pp = try self.managedObjectContext.fetch(fetchRequest)
-            var img : UIImage = UIImage(data: pp[0].value(forKeyPath: "imageData") as! Data)!
+            var img : UIImage = UIImage(data: pp[0].value(forKeyPath: Constants.NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME) as! Data)!
             print("")
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -77,7 +74,7 @@ class Interactor: NSObject {
     }
     
     func deleteAllImageRecords(){
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Nasa_Images")
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.NASA_IMAGES_ENTITY_NAME)
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         _ = try? managedObjectContext.execute(request)
     }
@@ -88,8 +85,6 @@ class Interactor: NSObject {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data: data)
                 else { return }
@@ -97,9 +92,7 @@ class Interactor: NSObject {
             if  error == nil {
                     self.saveImage(imageData: UIImagePNGRepresentation(image)!)
             }
-            
-            
-            if self.globalIndex < (self.globalFlickrResource.photos?.photo?.count)! - 1 {
+         if self.globalIndex < (self.globalFlickrResource.photos?.photo?.count)! - 1 {
                 self.globalIndex = self.globalIndex + 1
                 self.saveFlickrImageRecources()
             }

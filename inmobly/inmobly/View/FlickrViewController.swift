@@ -13,6 +13,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     @IBOutlet weak var nasaImagesCollectionView: UICollectionView!
     var presenter: Presenter! = nil
     var mainFlickrResource : FlickrResource!
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         nasaImagesCollectionView.register(UINib(nibName: String(describing: FlickrCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier:Constants.COLLECTION_VIEW_CELL_ID)
         nasaImagesCollectionView.delegate = self
         nasaImagesCollectionView.dataSource = self
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        nasaImagesCollectionView.addSubview(refreshControl) // not required when using UITableViewController
         // Do any additional setup after loading the view.
     }
 
@@ -32,12 +37,15 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     }
     
     
-    
+    @objc func refresh(){
+        presenter.loadFlickrNasaPhotos()
+    }
     
     
     // MARK: Implement presenter delegate methods
     func display(flickrResources: FlickrResource) {
         mainFlickrResource = flickrResources
+        refreshControl.endRefreshing()
         nasaImagesCollectionView.reloadData()
     }
     
