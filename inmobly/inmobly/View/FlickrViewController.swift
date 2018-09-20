@@ -14,6 +14,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     var presenter: Presenter! = nil
     var mainFlickrResource : FlickrResource!
     var refreshControl = UIRefreshControl()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         presenter.loadFlickrNasaPhotos(isManualUpdate: false)
         configureCollectionView()
         configurePullToRefresh()
+        self.activityIndicator.isHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +51,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     
     // MARK: Implement presenter delegate methods
     func display(flickrResources: FlickrResource) {
+        self.activityIndicator.isHidden = true
         mainFlickrResource = flickrResources
         refreshControl.endRefreshing()
         nasaImagesCollectionView.reloadData()
