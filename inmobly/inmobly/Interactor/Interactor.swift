@@ -19,7 +19,6 @@ class Interactor: NSObject {
     var globalFlickrResource: FlickrResource!
     
     //MARK: Get Flicker images
-    
     func getFlickrPhotos(isManualUpdate: Bool, completion: @escaping (_ result: FlickrResource?, _ error: Error?) -> Void) {
         let url = URL(string: Constants.RESOURCES_URL)
         var request : URLRequest = URLRequest(url: url!)
@@ -42,8 +41,6 @@ class Interactor: NSObject {
                             self.deleteAllImageRecords()
                             self.saveFlickrResourceImagesInDatabase()
                         }
-                    }else{
-                        self.retriveImagesFromDatabase()
                     }
                     completion (flickrResource,nil)
                 }
@@ -55,7 +52,6 @@ class Interactor: NSObject {
     }
     
     //MARK: CoreData Methods
-    
     //Save Image in Nasa_Images Entity
     func saveImageInDatabase(imageData: Data) {
         let entity =

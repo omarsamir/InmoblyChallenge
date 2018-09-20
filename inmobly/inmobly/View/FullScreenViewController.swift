@@ -32,7 +32,6 @@ class FullScreenViewController: UIViewController {
     }
 
     // MARK: Images scrollView methods
-    
     //Display Nasa images scroll view
     func displayNasaImages(){
         var count: Int = 0

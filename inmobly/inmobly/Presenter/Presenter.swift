@@ -16,6 +16,7 @@ class Presenter: NSObject {
     weak var delegate : PresenterDelegate?
     let interactor : Interactor = Interactor()
     
+    // Request photos from Interactor
     func loadFlickrNasaPhotos (isManualUpdate: Bool) {
     interactor.getFlickrPhotos(isManualUpdate: isManualUpdate) { (flickerResource, error) in
         if error == nil {
