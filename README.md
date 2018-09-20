@@ -12,6 +12,6 @@ This task is to make a UIcollectionView displays a photos from flickr API moreov
     -  Entity : It owns all models needed `FlickrResource`, `Photos` and `Photo`.
 
 # Pods (V 1.5.2)
-- ` pod 'ObjectMapper'`: JSON parser to swift Object.
--  `pod 'SDWebImage'`: third party library to display images by lazy loading.
+- ` pod 'ObjectMapper'`: JSON parser to parse JSON response to swift Object.
+- `pod 'SDWebImage'`: third party library to display images using lazy loading.
   
