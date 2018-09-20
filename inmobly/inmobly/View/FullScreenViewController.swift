@@ -31,7 +31,9 @@ class FullScreenViewController: UIViewController {
         openImageFullScreen()
     }
 
-    // MARK: ScrollView methods
+    // MARK: Images scrollView methods
+    
+    //Display Nasa images scroll view
     func displayNasaImages(){
         var count: Int = 0
         var viewFrameX: CGFloat = 0.0
@@ -55,6 +57,7 @@ class FullScreenViewController: UIViewController {
         self.fullScreenScrollView.contentSize = contentSize
     }
     
+    //Open Image in Full screen according to 'photoIndex'
     func openImageFullScreen(){
         self.fullScreenScrollView.setContentOffset(CGPoint(x: CGFloat(photoIndex) * self.fullScreenScrollView.frame.size.width, y: 0), animated: false)
     }

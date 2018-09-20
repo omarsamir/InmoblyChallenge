@@ -29,9 +29,4 @@ class Presenter: NSObject {
             }
         }
     }
-    
-    func manualUpdateFlickerNasaPhotos(){
-        interactor.deleteAllImageRecords()
-        loadFlickrNasaPhotos(isManualUpdate: true)
-    }
 }

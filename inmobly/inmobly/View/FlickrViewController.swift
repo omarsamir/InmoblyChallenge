@@ -20,15 +20,8 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         presenter = Presenter()
         presenter.delegate = self
         presenter.loadFlickrNasaPhotos(isManualUpdate: false)
-//        mainFlickrResource = FlickrResource(map: Map(mappingType: .toJSON, JSON: [:]))
-        nasaImagesCollectionView.register(UINib(nibName: String(describing: FlickrCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier:Constants.COLLECTION_VIEW_CELL_ID)
-        nasaImagesCollectionView.delegate = self
-        nasaImagesCollectionView.dataSource = self
-        
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        nasaImagesCollectionView.addSubview(refreshControl) // not required when using UITableViewController
-        // Do any additional setup after loading the view.
+        configureCollectionView()
+        configurePullToRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +34,18 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         presenter.loadFlickrNasaPhotos(isManualUpdate: true)
     }
     
+    // MARK: View did Load Pre-Configutarion
+    func configureCollectionView(){
+        self.nasaImagesCollectionView.register(UINib(nibName: String(describing: FlickrCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier:Constants.COLLECTION_VIEW_CELL_ID)
+        self.nasaImagesCollectionView.delegate = self
+        self.nasaImagesCollectionView.dataSource = self
+    }
+    
+    func configurePullToRefresh(){
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Getting Images from Flickr")
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.nasaImagesCollectionView.addSubview(refreshControl)
+    }
     
     // MARK: Implement presenter delegate methods
     func display(flickrResources: FlickrResource) {
@@ -58,9 +63,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     }
     
     // MARK: Implement Collection view delegate methods
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if mainFlickrResource == nil {
             return 0
         }else{
@@ -75,7 +78,6 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         cell.flickrImage.sd_setImage(with: URL(string: (mainFlickrResource.photos?.photo![indexPath.row].urlM)!), placeholderImage: UIImage(named: Constants.GREY_PLACEHOLDER_IMAGE_NAME), options: .refreshCached, completed: nil)
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let fullScreenVC = FullScreenViewController(nibName: String(describing: FullScreenViewController.self), bundle: nil)

@@ -14,8 +14,11 @@ class Interactor: NSObject {
     
     let managedObjectContext : NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+//  global variables for recursive function saveFlickrImageRecources
     var globalIndex: Int = 0
     var globalFlickrResource: FlickrResource!
+    
+    //MARK: Get Flicker images
     
     func getFlickrPhotos(isManualUpdate: Bool, completion: @escaping (_ result: FlickrResource?, _ error: Error?) -> Void) {
         let url = URL(string: Constants.RESOURCES_URL)
@@ -34,7 +37,13 @@ class Interactor: NSObject {
                     self.globalFlickrResource = flickrResource
                     
                     if isManualUpdate {
-                        self.saveFlickrImageRecources()
+                        // If manual update by pull to refresh delete all records and save new images
+                        DispatchQueue.global().async {
+                            self.deleteAllImageRecords()
+                            self.saveFlickrResourceImagesInDatabase()
+                        }
+                    }else{
+                        self.retriveImagesFromDatabase()
                     }
                     completion (flickrResource,nil)
                 }
@@ -45,8 +54,10 @@ class Interactor: NSObject {
         dataTask.resume()
     }
     
+    //MARK: CoreData Methods
     
-    func saveImage(imageData: Data) {
+    //Save Image in Nasa_Images Entity
+    func saveImageInDatabase(imageData: Data) {
         let entity =
             NSEntityDescription.entity(forEntityName: Constants.NASA_IMAGES_ENTITY_NAME,
                                        in: self.managedObjectContext)!
@@ -61,26 +72,34 @@ class Interactor: NSObject {
         }
     }
     
-    
-    func retriveImgage(){
+    //Retrive all Images in Nasa_Images Entity
+    func retriveImagesFromDatabase()->[UIImageView]{
+        var images : [UIImageView] = []
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: Constants.NASA_IMAGES_ENTITY_NAME)
         do {
-            let pp = try self.managedObjectContext.fetch(fetchRequest)
-            var _ : UIImage = UIImage(data: pp[0].value(forKeyPath: Constants.NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME) as! Data)!
-            print("")
+            let imagesDataArray = try self.managedObjectContext.fetch(fetchRequest)
+            for resource in imagesDataArray {
+                let img : UIImage = UIImage(data: resource.value(forKeyPath: Constants.NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME) as! Data)!
+                DispatchQueue.main.async {
+                    images.append(UIImageView (image: img))
+                }
+            }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+        return images
     }
     
+    //Delete all Images in Nasa_Images Entity
     func deleteAllImageRecords(){
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.NASA_IMAGES_ENTITY_NAME)
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         _ = try? managedObjectContext.execute(request)
     }
     
-    func saveFlickrImageRecources(){
+    //Save all Flickr Images resource [Recursive function]
+    func saveFlickrResourceImagesInDatabase(){
         let url = URL(string: (globalFlickrResource.photos?.photo![globalIndex].urlM)!)
         let request : URLRequest = URLRequest(url: url!)
         
@@ -91,11 +110,11 @@ class Interactor: NSObject {
                 else { return }
             
             if  error == nil {
-                    self.saveImage(imageData: UIImagePNGRepresentation(image)!)
+                    self.saveImageInDatabase(imageData: UIImagePNGRepresentation(image)!)
             }
-         if self.globalIndex < (self.globalFlickrResource.photos?.photo?.count)! - 1 {
+            if self.globalIndex < (self.globalFlickrResource.photos?.photo?.count)! - 1 {
                 self.globalIndex = self.globalIndex + 1
-                self.saveFlickrImageRecources()
+                self.saveFlickrResourceImagesInDatabase()
             }
             }.resume()
     }
