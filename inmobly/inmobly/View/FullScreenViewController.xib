@@ -51,11 +51,20 @@
                         <action selector="dismissFullScreenModeAction:" destination="-1" eventType="touchUpInside" id="Uwn-5Z-J9Z"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe Left and Right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yij-fY-xLc">
+                    <rect key="frame" x="166" y="40" width="189" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="yij-fY-xLc" firstAttribute="leading" secondItem="1bW-xi-bVL" secondAttribute="trailing" constant="116" id="1D1-ea-ztX"/>
                 <constraint firstItem="5hu-ig-w0o" firstAttribute="top" secondItem="Ud1-lE-CDc" secondAttribute="top" id="1ni-oU-TOw"/>
                 <constraint firstItem="1bW-xi-bVL" firstAttribute="top" secondItem="Ud1-lE-CDc" secondAttribute="top" constant="20" id="2mf-dk-Ex5"/>
+                <constraint firstItem="yij-fY-xLc" firstAttribute="top" secondItem="1bW-xi-bVL" secondAttribute="top" id="8Zr-PN-HeV"/>
+                <constraint firstItem="Ud1-lE-CDc" firstAttribute="trailing" secondItem="yij-fY-xLc" secondAttribute="trailing" constant="20" id="KDU-cU-zbF"/>
                 <constraint firstItem="Ud1-lE-CDc" firstAttribute="trailing" secondItem="5hu-ig-w0o" secondAttribute="trailing" id="KNG-4c-nwE"/>
                 <constraint firstItem="1bW-xi-bVL" firstAttribute="leading" secondItem="Ud1-lE-CDc" secondAttribute="leading" constant="20" id="Ret-UH-8Yq"/>
                 <constraint firstItem="Ud1-lE-CDc" firstAttribute="bottom" secondItem="5hu-ig-w0o" secondAttribute="bottom" id="pnI-Mv-FkE"/>

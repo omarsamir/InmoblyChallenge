@@ -80,6 +80,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let fullScreenVC = FullScreenViewController(nibName: String(describing: FullScreenViewController.self), bundle: nil)
         fullScreenVC.flickrResource = mainFlickrResource
+        fullScreenVC.photoIndex = indexPath.row
         self.present(fullScreenVC, animated: true, completion: nil)
     }
 }

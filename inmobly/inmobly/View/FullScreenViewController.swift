@@ -12,10 +12,12 @@ class FullScreenViewController: UIViewController {
     @IBOutlet weak var fullScreenScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     var flickrResource: FlickrResource!
+    var photoIndex: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fullScreenScrollView.isPagingEnabled = true
+        
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +28,7 @@ class FullScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         displayNasaImages()
+        openImageFullScreen()
     }
 
     // MARK: ScrollView methods
@@ -36,17 +39,26 @@ class FullScreenViewController: UIViewController {
         let height = self.fullScreenScrollView.frame.size.height
         for photo in (flickrResource.photos?.photo)! {
             count = count + 1
-            let fullScreenImage : UIImageView = UIImageView(frame: CGRect(x: viewFrameX, y: 0, width: width, height: height))
-            fullScreenImage.sd_setImage(with: URL(string: (photo.urlL != nil) ? photo.urlL! : photo.urlM!), placeholderImage: UIImage(named: Constants.GREY_PLACEHOLDER_IMAGE_NAME), options: .refreshCached, completed: nil)
-             fullScreenImage.contentMode = .scaleAspectFit
-             self.fullScreenScrollView.addSubview(fullScreenImage)
-            viewFrameX = viewFrameX + width
+            if (photo.urlL == nil && photo.urlM == nil){
+                continue
+            }else{
+                let fullScreenImage : UIImageView = UIImageView(frame: CGRect(x: viewFrameX, y: 0, width: width, height: height))
+                fullScreenImage.sd_setImage(with: URL(string: (photo.urlL != nil) ? photo.urlL! : photo.urlM!), placeholderImage: UIImage(named: Constants.GREY_PLACEHOLDER_IMAGE_NAME), options: .refreshCached, completed: nil)
+                fullScreenImage.contentMode = .scaleAspectFit
+                self.fullScreenScrollView.addSubview(fullScreenImage)
+                viewFrameX = viewFrameX + width
+            }
         }
         var contentSize = self.fullScreenScrollView.frame.size
         contentSize.width = viewFrameX
         contentSize.height = 0.0
         self.fullScreenScrollView.contentSize = contentSize
     }
+    
+    func openImageFullScreen(){
+        self.fullScreenScrollView.setContentOffset(CGPoint(x: CGFloat(photoIndex) * self.fullScreenScrollView.frame.size.width, y: 0), animated: false)
+    }
+    
     // MARK: Actions
     @IBAction func dismissFullScreenModeAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
