@@ -15,9 +15,10 @@ protocol PresenterDelegate : AnyObject {
 class Presenter: NSObject {
     weak var delegate : PresenterDelegate?
     let interactor : Interactor = Interactor()
-    func loadFlickrNasaPhotos () {
-        interactor.getFlickrPhotos { (flickerResource, error) in
-            if error == nil {
+    
+    func loadFlickrNasaPhotos (isManualUpdate: Bool) {
+    interactor.getFlickrPhotos(isManualUpdate: isManualUpdate) { (flickerResource, error) in
+        if error == nil {
                  DispatchQueue.main.async {
                     self.delegate?.display(flickrResources: flickerResource!)
                 }
@@ -27,5 +28,10 @@ class Presenter: NSObject {
                 }
             }
         }
+    }
+    
+    func manualUpdateFlickerNasaPhotos(){
+        interactor.deleteAllImageRecords()
+        loadFlickrNasaPhotos(isManualUpdate: true)
     }
 }

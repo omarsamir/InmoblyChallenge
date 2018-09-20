@@ -19,7 +19,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
         super.viewDidLoad()
         presenter = Presenter()
         presenter.delegate = self
-        presenter.loadFlickrNasaPhotos()
+        presenter.loadFlickrNasaPhotos(isManualUpdate: false)
 //        mainFlickrResource = FlickrResource(map: Map(mappingType: .toJSON, JSON: [:]))
         nasaImagesCollectionView.register(UINib(nibName: String(describing: FlickrCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier:Constants.COLLECTION_VIEW_CELL_ID)
         nasaImagesCollectionView.delegate = self
@@ -38,7 +38,7 @@ class FlickrViewController: UIViewController,PresenterDelegate,UICollectionViewD
     
     
     @objc func refresh(){
-        presenter.loadFlickrNasaPhotos()
+        presenter.loadFlickrNasaPhotos(isManualUpdate: true)
     }
     
     

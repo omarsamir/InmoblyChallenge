@@ -17,7 +17,7 @@ class Interactor: NSObject {
     var globalIndex: Int = 0
     var globalFlickrResource: FlickrResource!
     
-    func getFlickrPhotos(completion: @escaping (_ result: FlickrResource?, _ error: Error?) -> Void) {
+    func getFlickrPhotos(isManualUpdate: Bool, completion: @escaping (_ result: FlickrResource?, _ error: Error?) -> Void) {
         let url = URL(string: Constants.RESOURCES_URL)
         var request : URLRequest = URLRequest(url: url!)
         request.httpMethod = Constants.HTTPREQUEST_TYPE_GET
@@ -32,9 +32,10 @@ class Interactor: NSObject {
                                              encoding: .ascii)
                     let flickrResource : FlickrResource = FlickrResource(JSONString: theJSONText!)!
                     self.globalFlickrResource = flickrResource
-//                    self.saveFlickrImageRecources()
-//                    self.deleteAllImageRecords()
-                    self.retriveImgage()
+                    
+                    if isManualUpdate {
+                        self.saveFlickrImageRecources()
+                    }
                     completion (flickrResource,nil)
                 }
             }else{
@@ -66,7 +67,7 @@ class Interactor: NSObject {
             NSFetchRequest<NSManagedObject>(entityName: Constants.NASA_IMAGES_ENTITY_NAME)
         do {
             let pp = try self.managedObjectContext.fetch(fetchRequest)
-            var img : UIImage = UIImage(data: pp[0].value(forKeyPath: Constants.NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME) as! Data)!
+            var _ : UIImage = UIImage(data: pp[0].value(forKeyPath: Constants.NASA_IMAGES_IMAGE_DATA_PROPERTY_NAME) as! Data)!
             print("")
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
