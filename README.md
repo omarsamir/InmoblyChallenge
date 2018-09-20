@@ -4,11 +4,11 @@ This task is to make a UIcollectionView displays a photos from flickr API moreov
 -   Swift 4.1
 # Design
   - VIPER design pattern.
-    - View : 2 Classes `FlickrViewController` (Main View) and  ` FullScreenViewController` (Full Screen Mode View)
+    - View : 2 Classes `FlickrViewController` (Main View) and  ` FullScreenViewController` (Full Screen Mode View and Horizontal Scrollview)
     - Interactor : 1 Class `Interactor`, It Contains all business methods
             -  Flickr API calls
             -  Core Data methods.
-    -  Presenter : 1 Class `Presenter`, It Contains methods that fill the passive view with data.
+    -  Presenter : 1 Class `Presenter`, It Contains methods that fill the passive view layer with data.
     -  Entity : It owns all models needed `FlickrResource`, `Photos` and `Photo`.
 
 # Pods (V 1.5.2)
